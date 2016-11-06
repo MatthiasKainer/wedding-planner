@@ -1,0 +1,79 @@
+{
+    "directories": {
+        "target": "<%= config.directories.root %>/../wedding-release",
+        "JavaScript": {
+            "src": "<%= config.directories.root %>/",
+            "unit": "",
+            "acceptance": ""
+        },
+        "TypeScript": {
+            "src": "<%= config.directories.root %>/",
+            "unit": "",
+            "acceptance": ""
+        },
+        "HTML": {
+            "src": "<%= config.directories.root %>/view"
+        }
+    },
+    "sources": {
+        "JavaScript": {
+            "files": [
+                "<%= config.directories['JavaScript'].src %>/**/*.js"
+            ]
+        },
+        "TypeScript": {
+            "files": [
+                "<%= config.directories['TypeScript'].src %>/typings/**/*.ts",
+                "<%= config.directories['TypeScript'].src %>/controller/*.ts",
+                "<%= config.directories['TypeScript'].src %>/model/*.ts",
+                "<%= config.directories['TypeScript'].src %>/service/*.ts",
+                "<%= config.directories['TypeScript'].src %>/provider/*.ts",
+                "!<%= config.directories['TypeScript'].src %>/node_modules/**/*"
+            ],
+            "tests": {
+                "unit": [
+                    "<%= config.directories['TypeScript'].unit %>/**/*.js"
+                ]
+            }
+        },
+        "HTML": {
+            "files": [
+                "<%= config.directories['HTML'].src %>/**/*.jade"
+            ]
+        }
+    },
+    "deployables": {
+        "files": [
+            {
+                "expand": true,
+                "cwd": "<%= config.directories['JavaScript'].src %>/",
+                "src": [
+                    "**/*.js",
+                    "**/*.json",
+                    "!node_modules/**/*",
+                    "readme.md"
+                ],
+                "dest": "<%= config.directories.target %>"
+            },
+            {
+                "expand": true,
+                "cwd": "<%= config.directories['TypeScript'].src %>/",
+                "src": [
+                    "**/*.js",
+                    "**/*.json",
+                    "!node_modules/**/*",
+                    "readme.md"
+                ],
+                "dest": "<%= config.directories.target %>"
+            },
+            {
+                "expand": true,
+                "cwd": "<%= config.directories['HTML'].src %>/",
+                "src": [
+                    "**/*.jade"
+                ],
+                "dest": "<%= config.directories.target %>"
+            }
+        ]
+    }
+}

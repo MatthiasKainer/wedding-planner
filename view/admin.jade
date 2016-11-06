@@ -1,0 +1,63 @@
+extends ./_layout.jade
+
+block content
+    #editUser.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4.modal-title Bearbeiten von 
+                        span(data-label="name")
+                .modal-body
+                    form#modal(action="/admin/edit", method="POST")
+                        input(type='hidden', data-edit="name", name="name")
+                        .form-group
+                            input.form-control(type='text', placeholder="Teilnehmer (Kommagetrennt)", data-edit="people", name="people")
+                        .form-group
+                            input.form-control(type='text', placeholder="Status", data-edit="coming", name="coming")
+                        .form-group
+                            input.form-control(type='text', placeholder="Code", data-edit="code", name="code")
+                        label
+                            input(type='checkbox', data-edit="hotelRequired", name="hotelRequired")
+                            | Braucht ein Hotel?
+                        .form-group
+                            input.form-control(type='text', placeholder="von-bis", data-edit="hotelRange", name="hotelRange")
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-primary(type='button', data-fire="form#modal") Send message
+    h1 Gäste
+    .alert.alert-info
+        | Insgesamt wurden  
+        span= total
+        |  Personen eingeladen, wovon bisher  
+        strong= accepted
+        |  zugesagt haben
+    .panel.panel-default
+        .panel-body
+            form.form-inline(action="/admin/add", method="POST")
+                .form-group
+                    label.sr-only(for="name") Name
+                    input.form-control(type="text",id="name",name="name",placeholder="Name")
+                .form-group
+                    label.sr-only(for="people") Wer alles?
+                    input.form-control(type="text",id="people",name="people",placeholder="Kommagetrennte Liste")
+                button.btn.btn-default(type="submit") Hinzufügen
+    div(data-element="table",style="max-height:400px; overflow:auto;")
+        table.table.table-hover
+            tr
+                th Name
+                th Personen
+                th Wer alles
+                th Zugesagt?
+                th Code
+                th Hotel benötigt?
+            each invitee in invitees
+                tr(data-value-name=invitee.name, data-value-people=invitee.people, data-value-coming=invitee.coming, data-value-code=invitee.code, data-value-hotelRequired="" + invitee.hotelRequired, data-value-hotelRange=invitee.hotelRange, data-toggle="modal" data-target="#editUser")
+                    td= invitee.name
+                    td= invitee.getCount()
+                    td= invitee.people
+                    td= invitee.coming
+                    td= invitee.code
+                    td= invitee.hotelRequired
+  

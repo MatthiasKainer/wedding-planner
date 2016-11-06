@@ -1,0 +1,411 @@
+include ./tsvp
+doctype html
+html(lang='de')
+    head
+        // Meta, title, CSS, favicon, etc.
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='Sabrina und Matthias Heiraten')
+        meta(name='keywords', content='hochzeit')
+        meta(name='author', content='Matthias Kainer')
+        title Sabrina & Matthias | 20. Mai 2017
+        link(rel='stylesheet', href='/css/_.css', type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet', type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Great+Vibes', rel='stylesheet', type='text/css')
+    body
+        // Page Preloader
+        #preloader
+        // Image Header
+        #header.image-header
+            .container
+                .row
+                    .col-md-6
+                        img.img-responsive(src="/images/heart.jpg",alt="heart")
+                    .col-md-6
+                        img.img-responsive(src="/images/einladung.png",alt="einladung")
+                        
+        
+        if (!invitee.hasAnswered)
+            section#rsvp
+                .container
+                    +rsvp(invitee)
+        header
+            // Main Navigation
+            nav#main-nav
+                label.show-menu.wobble(for='show-menu')
+                    i.fa.fa-bars.fa-lg
+                input#show-menu(type='checkbox', role='button')
+                ul#menu.onepage
+                    li
+                        a(href='#love-story') Wir
+                    li
+                        a(href='#people') Personen
+                    li
+                        a(href='#wedding') Die Hochzeit
+                    li
+                        a(href='#event-map') Anfahrt
+                    li
+                        a(href='#accommodation') Unterkunft
+                    if (!invitee.hasAnswered)
+                        li
+                            a(href='#rsvp') Zu- oder Absagen
+        .keep
+        // Love Story Section
+        section#love-story
+            .container
+                .row
+                    h1 Wir
+                    .hr
+                    .col-md-6(style='height:200px;')
+                        p
+                            | Als Sabrina &amp; Matthias am 15. August 2010 (nach Matthias) oder Monate später (laut Sabrina) zusammenkamen, dachter keiner 
+                            | der beiden, dass zwei Jahre später eine Tochter, zweieinhalb Jahre später die standesamtliche Trauung, 
+                            | drei Jahre später ein Sohn und vier Jahre später Karlsruhe folgen würden.
+                    .col-md-6(style='height:200px;')
+                        p
+                            | In all der Hektik fehlte den Beiden bisher die Zeit, ihr Glück mit euch gemeinsam in einer kirchlichen Trauung zu feiern. 
+                            | Nun ist es endlich so weit, und so wollen wir euch herzlich zu unserer kirchlichen Trauung am 20.
+                            | Mai 2017 in der Ravensburg im schönen Kraichgau einladen.
+                .row.row-centered.mt-40
+                    .col-lg-4.col-md-6.col-sm-6.text-center.col-lg-offset-1
+                        .bride
+                            img(src='images/Sabrina.jpg', alt='Sabrina', style='max-width:100%;')
+                            h2 Sabrina
+                            p
+                                | Geboren am 02.01.1982, wuchs Sabrina unter ihrem Mädchennamen 
+                                em Forwick 
+                                | in Freising bei ihrer Großmutter auf. 
+                                | Als bayrisches Kindl fest verankert wurde sie von Matthias nach Karlsruhe entführt.
+                    .col-lg-2.visible-lg.wed-logo
+                        i.fa.fa-heart(style='font-size:10em;')
+                    .col-lg-4.col-md-6.col-sm-6.text-center
+                        .groom
+                            img(src='images/Matthias.jpg', alt='Matthias', style='max-width:100%;')
+                            h2 Matthias
+                            p
+                                | Geboren am 12.06.1981 verbrachte Matthias seine Kindheit & Jugend in Graz, Berlin, München und Bozen, bevor er mit Sabrina in München zur Ruhe kam und dann nach Karlsruhe weiter zog.
+        // Gallery
+        section#gallery
+            .container
+                .row
+                    h1 Bilder zur Hochzeit
+                    .hr
+                    #owl-gallery.owl-carousel.owl-theme.mt-50
+                        .item
+                            .image
+                                a(href='/images/die-burg.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/die-burg.jpg', alt='')
+                        .item
+                            .image
+                                a(href='/images/rittersaal.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/rittersaal.jpg', alt='')
+                        .item
+                            .image
+                                a(href='/images/trausaal.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/trausaal.jpg', alt='')
+                        .item
+                            .image
+                                a(href='/images/ravensburg.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/ravensburg.jpg', alt='')
+                        .item
+                            .image
+                                a(href='/images/love-quote-01.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/love-quote-01.jpg', alt='')
+                        .item
+                            .image
+                                a(href='/images/love-quote-02.jpg', data-rel='lightcase:mw-gallery')
+                                    img(src='/images/love-quote-02.jpg', alt='')
+        // Text with background image
+        section
+            #parallax-quote.love-quote.big.q01
+                h1 Marriage is a journey that lasts until the end of eternity.
+                span Here’s to wishing that the both of you have a memorable and joyful ride.
+        // People Involved Section
+        section#people
+            .container
+                .row
+                    h1 Trauzeugen
+                    .hr.mb-50
+                    .col-md-6.col-sm-6
+                        img(src='images/personen/hannes.JPG', alt='Hannes Gentsch')
+                        .description
+                            h2 Hannes Gentsch
+                            span Trauzeuge
+                    .col-md-6.col-sm-6
+                        img(src='images/personen/hanna.JPG', alt='Hannah')
+                        .description
+                            h2 Johanna Schauer
+                            span Trauzeugin
+            .container
+                .row
+                    h1 Beteiligte Personen
+                    .hr
+                    #owl-people.owl-carousel.owl-theme.mt-30
+                        .item
+                            img(src='images/personen/greta.jpg', alt='Blumenmädchen')
+                            .description
+                                h2 Greta
+                                span Blumenmädchen
+                        .item
+                            img(src='images/personen/ella.jpg', alt='Blumenmädchen')
+                            .description
+                                h2 Ella
+                                span Blumenmädchen
+                        .item
+                            img(src='images/personen/marlene.JPG', alt='Blumenmädchen')
+                            .description
+                                h2 Marlene
+                                span Blumenmädchen
+                        .item
+                            img(src='images/personen/samy.jpg', alt='Ringjunge')
+                            .description
+                                h2 Samuel
+                                span Ringjunge
+                        .item
+                            img(src='images/personen/gerhard.JPG', alt='Brautvater')
+                            .description
+                                h2 Gerhard
+                                span Brautersatzvater
+                        .item
+                            img(src='images/personen/heidi.JPG', alt='Brautmutter')
+                            .description
+                                h2 Heidi
+                                span Brautersatzmutter
+                        .item
+                            img(src='images/personen/gudrun.JPG', alt='Bräutigamsmutter')
+                            .description
+                                h2 Gudrun
+                                span Bräutigamsmutter
+                        .item
+                            img(src='images/personen/franz.JPG', alt='Bräutigamsvater')
+                            .description
+                                h2 Franz
+                                span Bräutigamsvater
+        // Love quote Section
+        section
+            #parallax-quote.love-quote.big.q02
+                h1
+                    | To love someone deeply gives you strength.
+                    br
+                    | Being loved by someone deeply gives you courage.
+        // The Wedding Section
+        section#wedding
+            .container
+                .row
+                    h1 Die Hochzeit
+                    .hr
+                    .col-md-8.col-centered.text-center
+                        h3 Eine Hochzeit findet im Herzen statt, doch feiern sollte man außerhalb.
+                        p.text-center
+                            | Wir hoffen wir können für euch eine Hochzeit organisieren, die Freude schenkt, und an die ihr euch gerne erinnern werdet. 
+                        p.text-center Der Countdown läuft...
+                    .col-md-12
+                        // Countdown
+                        .countdown.mt-30.mb-40(data-countdown='2017/05/20')
+            .container
+                .row
+                    h1 Ablauf
+                    .hr
+                    .col-md-12
+                        ul.timeline
+                            li
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Empfang
+                                        span 14:00
+                                    .tl-body
+                                        img.img-responsive(src="/images/burg-vorne.jpg",alt="Die Burg")
+                                        p
+                                            | Zuerst wollen wir euch am Fuße der Ravensburg empfangen. Ein paar kleine Snacks und Getränke sollen euch für die Zeit stärken und wohl stimmen.
+                            li.timeline-inverted
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Gang zur Traukapelle
+                                        span 16:00
+                                    .tl-body
+                                        img.img-responsive(src="/images/burg-aufgang.jpg",alt="Die Burg")
+                                        p
+                                            | Gemeinsam ziehen wir anschließend auf die Burg, und in die Traukapelle. 
+                            li
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Trauung
+                                        span 16:30
+                                    .tl-body
+                                        img.img-responsive(src="/images/traukapelle.jpg",alt="traukapelle")
+                                        p
+                                            | In der Traukapelle wird dann die Trauung vollzogen.
+                            li.timeline-inverted
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Zum Essen
+                                        span 17:30
+                                    .tl-body
+                                        img.img-responsive(src="/images/burg-eingang.jpg",alt="eingang in die burg")
+                                        p
+                                            | Nach der Trauung werden wir aus der Kapelle hoch in die Burg steigen.
+                            li
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Essen
+                                        span 18:30
+                                    .tl-body
+                                        img.img-responsive(src="/images/rittersaal-fein.jpg",alt="Rittersaal")
+                                        p
+                                            | Ein gemeinsames Ritteressen mit mittelalterlicher Unterhaltung dient als Start in den gemütlichen Teil des Abends.
+                            li.timeline-inverted
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Abendveranstaltung
+                                        span 21:00
+                                    .tl-body
+                                        img.img-responsive(src="/images/palais.jpg",alt="Palais")
+                                        p
+                                            | Nach dem Essen werden wir den Abend gemütlich mit einer Feier ausklingen lassen. 
+                            li
+                                .tl-circ
+                                    i.fa.fa-dot-circle-o
+                                .timeline-panel
+                                    .tl-heading
+                                        h4 Ende
+                                        span 03:00
+                                    .tl-body
+                                        p
+                                            | Um 03:00 wird schließlich die letzte Runde ausgegeben.
+        // Event Map Section
+        section#event-map
+            h1 Anfahrt
+            .map-header
+                .ravensburg
+                    .container
+                        .row
+                            .col-sm-6
+                                span.time 14:00
+                            .col-sm-6
+                                h2 Ravensburg
+                                span.date 20. Mai 2017
+                            a#goto-maps-location.round-button.lila(href='https://www.google.de/maps/place/Burgrestaurant+Ravensburg/@49.0996444,8.8718972,17z/data=!3m1!4b1!4m2!3m1!1s0x47979ca6a404f449:0x64b7d34cd072ff13', target='_blank')
+                                i.fa.fa-map-marker
+            #map
+        // Events Section
+        section#events
+            .container
+                .row
+                    .col-md-4.col-sm-4.col-xs-12
+                        .event-item
+                            h2 Die Burg
+                            span 16:30 - 17:15
+                            p
+                                | Sage und Legende berichten vom Ursprung der Ravensburg und des nach ihr benannten Geschlechts im Jahr 930. Damals soll ein „Rabanus“ in den Kraichgau gekommen und wegen seiner Verdienste von König Heinrich I zum Ritter geschlagen worden sein. Er habe bei Sulzfeld die Ravensburg erbaut und zu Ehren des Königs, des „Vogelstellers“, als Wappenbild einen Vogel und wegen seines Wohnortes im Kraichgau die Krähe, bzw. den Raben, erwählt.
+                            a.round-button.white(href='images/die-burg.jpg', data-rel='lightcase:mw-eventitems')
+                                i.fa.fa-plus-circle
+                            img(src='images/die-burg.jpg', alt='Die Burg')
+                    .col-md-4.col-sm-4.col-xs-12
+                        .event-item
+                            h2 Die Kapelle
+                            span 17:30 - 23:00
+                            p
+                                | 1607 errichtete Hans Friedrich Göler, markgräflich badischer Geheimer Rat und Obervogt zu Durlach, den einst zweigeschossigen Palas, südlich vom Torhaus der Hauptburg. In diesem Gebäude befand sich zu jener Zeit neben einer 320 Bände umfassenden Bibliothek auch ein größeres Familienarchiv, von dem nur noch ein Bruchteil erhalten geblieben ist.
+                                br
+                                br
+                            a.round-button.white(href='images/trausaal.jpg', data-rel='lightcase:mw-eventitems')
+                                i.fa.fa-plus-circle
+                            img(src='images/trausaal.jpg', alt='Die Kapelle', style='max-width:100%;')
+                    .col-md-4.col-sm-4.col-xs-12
+                        .event-item
+                            h2 Der Rittersaal
+                            span 23:30 - 06:00
+                            p
+                                | Inzwischen hat sich das „Burgrestaurant Ravensburg” durch seine gepflegte Küche und die ausgezeichneten Weine von Weingut Burg Ravensburg – von den Hängen des Burgberges – zu einem gastronomischen Anziehungspunkt hohen Ranges entwickelt.
+                                br
+                                |                                                            Seit Juli 2006 steht den Brautpaaren auf der Ravensburg auch eine Traukapelle für ihre kirchliche Trauung in historischem Umfeld zur Verfügung.
+                            a.round-button.white(href='images/rittersaal.jpg', data-rel='lightcase:mw-eventitems')
+                                i.fa.fa-plus-circle
+                            img(src='images/rittersaal.jpg', alt='Der Rittersaal', style='max-width:100%;')
+        // Accommodation Section
+        section#accommodation
+            .container
+                .row
+                    a(name="Unterbringung")
+                    h1 Unterbringung
+                    .hr
+                    .col-md-8.col-centered
+                        p.text-center
+                            | Um euch eine gute Unterkunft in der Nähe zu bieten haben wir im Hotel Achat Räume zur Reservierung bis zum Januar 2017 freigehalten.
+                            | Zu der Hochzeit werden Gratis-Taxishuttels angeboten.   
+                        p.text-center
+                            if (!invitee.expensesPaid) 
+                                | Bitte beachtet, dass ihr für die Kosten der Unterbringung selber aufkommen müsst. 
+                    .col-sm-4.col-xs-12
+                        .hotel-item
+                            .image(style="background-image: url('/images/achat/achat01.jpg');")
+                            .description
+                                p
+                                    | Dieses schöne Hotel befindet sich im Zentrum Brettens. Preis pro Nacht pro Doppelzimmer inklusive Frühstück etwa 85€.
+                                    br
+                                    br
+                                    br
+                    .col-sm-4.col-xs-12
+                        .hotel-item
+                            .image(style="background-image: url('/images/achat/achat02.jpg');")
+                            .description
+                                p
+                                    | Einzelzimmer kosten 66€ inklusive Frühstück. Zustellbetten kosten einen Aufpreis von 10€, Babybetten sind kostenfrei und Kinder unter 14 Jahren dürfen kostenfrei im Bett der Eltern nächtigen. 
+                    .col-sm-4.col-xs-12
+                        .hotel-item
+                            .image(style="background-image: url('/images/achat/achat03.jpg');")
+                            .description
+                                p
+                                    | Frühstück ist im Zimmerpreis inklusive. Die vorreservierung ist ab Freitag, wenn ihr erst Samstag anreisen werdet gebt das bitte bei eurer Zusage an. 
+                                    br
+                                    br
+        // Gifts
+        section#gifts
+            .container
+                .row
+                    h1 Geschenke
+                    .hr  
+            #parallax-quote.money-quote.big
+                h1 Wir freuen uns über Geld! 
+                    i.fa.fa-money
+                h3 Eine Hochzeit ist faszinierend teuer - darum wünschen wir uns von euch vor allem Geld, um die offenen Rechnungen nach der Hochzeit begleichen zu können.
+        // RSVP
+        if (invitee.hasAnswered)
+            section#rsvp
+                .container
+                    if invitee.isComing
+                        .alert.alert-success
+                            p Du hast uns schon zugesagt! Wenn sich was geändert hat, melde dich bitte direkt bei uns!
+                            p Wir haben folgende Teilnehmer eingeplant:
+                            p 
+                                each person in invitee.people
+                                    span.label.label-default= person
+                    else 
+                        .alert.alert-warning
+                            p Du hast uns abgesagt! Wenn sich was geändert hat, melde dich bitte direkt bei uns!
+        // Footer Section
+        footer
+            p
+                | © 2016-2017 | Sabrina & Matthias | Made with 
+                i.fa.fa-heart
+                |    by Matthias
+        // Scroll to top
+        #top-scroll
+            i.fa.fa-chevron-up
+        // JavaScript Files
+        // jQuery
+        script(src='/js/_.js')
+        // Google Maps
+        script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Noeo01jQoMZ0WeAAEHZ97kz4jVMAHfY')

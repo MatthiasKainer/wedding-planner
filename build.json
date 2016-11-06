@@ -1,0 +1,16 @@
+{
+    "prepare": {},
+    "compile": {
+        "typescript": {
+            "task": "ts",
+            "package": "grunt-ts",
+            "default": {
+                "options": {
+                    "module": "commonjs",
+                    "compile": true
+                },
+                "src": "<%= config.sources.TypeScript.files %>"
+            }
+        }
+    }
+}

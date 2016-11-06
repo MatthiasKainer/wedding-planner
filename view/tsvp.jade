@@ -1,0 +1,134 @@
+mixin rsvp(invitee)
+    .row
+        .jumbotron(style="margin-bottom:0px;")
+            if (invitee.people.length > 1)
+                h1 Kommt ihr zu unserer Hochzeit?
+            else 
+                h1 Kommst du zu unserer Hochzeit?
+            p Das ist die personalisierte Einladung für 
+                each person, index in invitee.people
+                    span.label.label-default= person
+                    if (invitee.people.length > 1 && index +1 < invitee.people.length)
+                        span  &amp;  
+                | ! Wir haben für
+                if (invitee.people.length > 1)
+                    |  euch  
+                else
+                    |  dich  
+                if (invitee.hotelRequired)
+                    span.label.label-default ein Hotelzimmer
+                    |  von 
+                    span.label.label-default= invitee.hotelRange
+                    |  vorgebucht.
+                else
+                    span.label.label-default kein Hotelzimmer vorgebucht.
+            p
+                if (invitee.people.length > 1)
+                    span Kommt ihr
+                else 
+                    span Kommst du
+                |  zu unserer Hochzeit?
+        .col-md-12.col-centered(style="margin-top:-2em;")
+            .btn-group.btn-group-justified.hidden-xs
+                form.btn-group(action='/attend',method='post')
+                    button.btn.btn-success.btn-lg(type='submit')
+                        i.fa.fa-thumbs-up(style="float:left; font-size:2.5em;") 
+                        div(style="white-space:normal;")
+                            if (invitee.people.length > 1)
+                                | Ja, stimmt alles! 
+                                br
+                                | Wir kommen so und 
+                                if (invitee.hotelRequired)
+                                    span wollen das Hotel verbindlich buchen!
+                                else
+                                    span benötigen kein Hotel
+                            else
+                                | Ja, stimmt alles! 
+                                br
+                                | Ich komme allein und will das Hotel verbindlich buchen!
+                form.btn-group(action='/nay',method='post')
+                    button.btn.btn-warning.btn-lg(type='submit')
+                        i.fa.fa-thumbs-down(style="float:right; font-size:2.5em;")
+                        div(style="white-space:normal;")
+                            if (invitee.people.length > 1)
+                                | Nein, wir kommen leider nicht
+                                br
+                                | Wir wünschen euch trotzdem eine schöne Hochzeit! 
+                            else
+                                | Nein, ich komme leider nicht
+                                br
+                                | Ich wünsche euch trotzdem eine schöne Hochzeit! 
+            .btn-group-vertical.btn-group-justified.visible-xs
+                form.btn-group(action='/attend',method='post',style="display:inline;")
+                    button.btn.btn-success.btn-lg(type='submit')
+                        i.fa.fa-thumbs-up(style="float:left; font-size:2.5em;") 
+                        div(style="white-space:normal;")
+                            if (invitee.people.length > 1)
+                                | Ja, stimmt alles! 
+                                br
+                                | Wir kommen so und 
+                                if (invitee.hotelRequired)
+                                    span wollen das Hotel verbindlich buchen!
+                                else
+                                    span benötigen kein Hotel
+                            else
+                                | Ja, stimmt alles! 
+                                br
+                                | Ich komme allein und will das Hotel verbindlich buchen!
+                form.btn-group(action='/nay',method='post',style="display:inline;")
+                    button.btn.btn-warning.btn-lg(type='submit')
+                        i.fa.fa-thumbs-down(style="float:right; font-size:2.5em;")
+                        div(style="white-space:normal;")
+                            if (invitee.people.length > 1)
+                                | Nein, wir kommen leider nicht
+                                br
+                                | Wir wünschen euch trotzdem eine schöne Hochzeit! 
+                            else
+                                | Nein, ich komme leider nicht
+                                br
+                                | Ich wünsche euch trotzdem eine schöne Hochzeit! 
+        .col-md-8.col-centered
+            p.text-right(style="white-space:normal;") Bitte beachtet, dass ihr für die Kosten der Unterbringung selber aufkommen müsst. Infos zu den Kosten des vorgebuchten Hotels findet ihr 
+                a(href="#Unterbringung") unten
+                | .
+        .hr
+        .col-md-8.col-centered
+            .panel.panel-danger
+                .panel-heading
+                    h2.panel-title Die Liste der Namen oben stimmt nicht? Zuviele, oder zuwenig Personen eingetragen? Dann schreib uns doch bitte wer kommt
+                .panel-body
+                    form.form-horizontal(action='/attend/custom',method='post',data-attendance="form")
+                        .form-group
+                            label.col-sm-2.control-label Erwachsene (Kommagetrennt)
+                            .col-sm-10
+                                input.form-control(type="text",placeholder="Erwachsene (Kommagetrennt)",name="Erwachsene")
+                        .form-group
+                            label.col-sm-2.control-label Kinder (Kommagetrennt)
+                            .col-sm-10
+                                input.form-control(type="text",placeholder="Kinder (Kommagetrennt)",name="Kinder")
+                        .form-group
+                            input(type="hidden",name="hotelRequired",value=false)
+                            input(type="hidden",name="hotelRange",value="")
+                            label.col-sm-2.control-label Wir brauchen ein Hotel
+                            .input-group
+                                .input-group-btn
+                                    button.btn.btn-default.dropdown-toggle(data-toggle="dropdown", data-attendance='selector') Von-Bis / Nein 
+                                        span.caret
+                                    ul.dropdown-menu
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="Nein") Nein, wir brauchen keines.
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="19.5.-21.5.") Freitag, 19.5. bis Sonntag 21.5.
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="20.5.-21.5.") Samstag, 20.5. bis Sonntag 21.5.
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="19.5.-22.5.") Freitag, 19.5. bis Montag 22.5.
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="19.5.-26.5.") Freitag, 19.5. bis Freitag 26.5.
+                                        li
+                                            a(tabindex="-1", href="", data-attendance-value="20.5.-27.5.") Samstag, 20.5. bis Samstag 27.5.
+                                        li.divider
+                                        li
+                                            a(tabindex="-1", href="#", data-attendance-value="other") Anders
+                                input.form-control(type="text", disabled, data-attendance='other', data-attendance-selection="", placeholder=" Bitte auswählen")
+                        button.btn.btn-success.btn-block(type='submit') So kommen wir!
